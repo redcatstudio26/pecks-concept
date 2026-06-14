@@ -1,0 +1,24 @@
+# Ignore everything by default, then whitelist only what index.html uses.
+# To track a new asset, reference it in index.html AND add a "!name" line below.
+*
+
+# Keep these
+!.gitignore
+!index.html
+
+# Image assets referenced by index.html
+!pecks-logo.png
+!chicken-holding.png
+!getfiredup-sticker.png
+!featured-menu-one.png
+!featured-menu-two.png
+!featured-menu-three.png
+!featured-menu-four.png
+!sauce-pairing-one.png
+!sauce-pairing-two.png
+!sauce-pairing-three.png
+!sauce-section.png
+!spice-level-bg2.png
+!mild-chicken-after.png
+!original-chicken-after.png
+!spicy-chicken-after.png

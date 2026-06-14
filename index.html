@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Peck's — Malaysia's First Nashville Hot Chicken</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo+Black&family=Inter:wght@400;500;600;700&family=Bowlby+One&family=Pacifico&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #e1251b;
+    --blue: #1f3a8a;
+    --cream: #f5efe4;
+    --ink: #1a1a1a;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: var(--ink);
+  }
+  .section {
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  /* ---------- HERO + SPICE WRAP (shared bg spanning both) ---------- */
+  .hero-spice {
+    position: relative;
+    background-image: url('spice-level-bg2.png');
+    background-color: var(--cream);
+    background-position: top center;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    min-height: 218vw;
+  }
+  .hero-spice > .hero,
+  .hero-spice > .spice-level,
+  .hero-spice > .sauce,
+  .hero-spice > .strip,
+  .hero-spice > .reels,
+  .hero-spice > .site-footer {
+    background: transparent !important;
+    background-image: none !important;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    background-color: var(--cream);
+    overflow: visible;
+  }
+  .hero-spice > .hero { z-index: 3; }
+
+  /* Top navigation */
+  .nav {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 56px;
+    z-index: 10;
+  }
+  .nav-logo {
+    display: inline-flex;
+    align-items: center;
+    line-height: 0;
+  }
+  .nav-logo img {
+    height: 64px;
+    width: auto;
+    display: block;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 38px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--ink);
+    position: relative;
+    padding-bottom: 4px;
+  }
+  .nav-links a.active {
+    color: var(--red);
+  }
+  .nav-links a.active::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -6px;
+    transform: translateX(-50%);
+    width: 22px;
+    height: 2px;
+    background: var(--red);
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+  }
+  .ig-icon {
+    width: 26px;
+    height: 26px;
+    border: 2px solid var(--ink);
+    border-radius: 7px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+  .ig-icon::before {
+    content: '';
+    width: 11px;
+    height: 11px;
+    border: 2px solid var(--ink);
+    border-radius: 50%;
+  }
+  .ig-icon::after {
+    content: '';
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    width: 3px;
+    height: 3px;
+    background: var(--ink);
+    border-radius: 50%;
+  }
+  .order-btn {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 12px 24px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Inter', sans-serif;
+  }
+  .order-btn .flame {
+    font-size: 14px;
+  }
+
+  /* Hand holding chicken */
+  .hero-chicken {
+    position: absolute;
+    top: 60%;
+    right: 0%;
+    transform: translateY(-50%) rotate(0deg) scale(1);
+    width: 38%;
+    max-width: 620px;
+    height: auto;
+    z-index: 5;
+    cursor: pointer;
+    animation: chickenSlideIn 1.1s cubic-bezier(.34, 1.56, .64, 1) 0.35s backwards;
+    transition: transform 0.45s cubic-bezier(.34, 1.56, .64, 1),
+                filter 0.45s ease;
+  }
+  .hero-chicken:hover {
+    transform: translateY(-52%) rotate(-3deg) scale(1.06);
+    filter: drop-shadow(0 18px 24px rgba(0,0,0,0.28));
+  }
+  @keyframes chickenSlideIn {
+    0%   { opacity: 0; transform: translateY(-50%) translateX(120%) rotate(18deg) scale(0.85); }
+    55%  { opacity: 1; transform: translateY(-52%) translateX(-4%)  rotate(-6deg) scale(1.06); }
+    72%  {              transform: translateY(-48%) translateX(2%)   rotate(3deg)  scale(0.97); }
+    88%  {              transform: translateY(-51%) translateX(-1%)  rotate(-1deg) scale(1.02); }
+    100% { opacity: 1; transform: translateY(-50%) translateX(0)     rotate(0deg)  scale(1);    }
+  }
+
+  /* GET FIRED UP sticker */
+  .fired-up-sticker {
+    position: absolute;
+    top: 18%;
+    right: 26%;
+    width: 280px;
+    height: auto;
+    transform: rotate(-8deg);
+    z-index: 6;
+    cursor: pointer;
+    filter: drop-shadow(0 6px 10px rgba(0,0,0,0.12));
+    animation: stickerPopIn 1.1s cubic-bezier(.34, 1.56, .64, 1) 0.85s backwards;
+    transition: transform 0.4s cubic-bezier(.34, 1.56, .64, 1),
+                filter 0.4s ease;
+  }
+  .fired-up-sticker:hover {
+    transform: rotate(4deg) scale(1.12);
+    filter: drop-shadow(0 14px 22px rgba(0,0,0,0.28));
+  }
+  @keyframes stickerPopIn {
+    0%   { opacity: 0; transform: translateX(-160%) rotate(40deg)  scale(0.55); }
+    55%  { opacity: 1; transform: translateX(8%)    rotate(-14deg) scale(1.15); }
+    72%  {              transform: translateX(-3%)   rotate(-4deg)  scale(0.95); }
+    88%  {              transform: translateX(1%)    rotate(-10deg) scale(1.04); }
+    100% { opacity: 1; transform: translateX(0)     rotate(-8deg)  scale(1);    }
+  }
+
+  /* Hero content */
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 56px;
+    transform: translateY(-48%);
+    max-width: 640px;
+    z-index: 5;
+  }
+  .hero-content h1 {
+    font-family: 'Anton', 'Archivo Black', sans-serif;
+    font-weight: 400;
+    margin: 0;
+    line-height: 0.92;
+    letter-spacing: 1px;
+  }
+  .hero-content .line-1 {
+    color: var(--blue);
+    font-size: 78px;
+    display: block;
+    margin-bottom: 6px;
+  }
+  .hero-content .line-2,
+  .hero-content .line-3 {
+    color: var(--red);
+    font-size: 130px;
+    display: block;
+  }
+  .hero-content p.tagline {
+    margin: 15px 0 32px;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #2a2a2a;
+    font-weight: 500;
+  }
+
+  .cta-row {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 44px;
+  }
+  .btn {
+    border-radius: 10px;
+    padding: 18px 40px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.6px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    font-family: 'Inter', sans-serif;
+    border: 1.5px solid transparent;
+    text-decoration: none;
+    line-height: 1;
+    min-height: 44px;
+  }
+  .btn-primary {
+    background: var(--blue);
+    color: #fff;
+  }
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+  .btn .arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 18px;
+    height: 18px;
+    font-size: 16px;
+    line-height: 1;
+  }
+
+  .badges {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #333;
+  }
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .badge .icon {
+    font-size: 18px;
+  }
+  .badge .divider {
+    color: #ccc;
+  }
+  .sep {
+    color: #d0c8b8;
+    font-size: 18px;
+  }
+
+  /* ---------- SPICE LEVEL ---------- */
+  .spice-level {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1040 / 260;
+    background: transparent;
+    overflow: hidden;
+  }
+  .spice-title {
+    position: absolute;
+    top: 10%;
+    left: 8%;
+    /* max-width: 320px; */
+    z-index: 2;
+  }
+  .spice-title h2 {
+    font-family: 'Anton', 'Archivo Black', sans-serif;
+    font-weight: 400;
+    color: var(--red);
+    font-size: clamp(120px, 3.4vw, 52px);
+    line-height: 0.95;
+    margin: 0 0 14px;
+    letter-spacing: 1px;
+  }
+  .spice-title p {
+    margin: 0;
+    font-size: clamp(20px, 0.95vw, 14px);
+    color: #2a2a2a;
+    line-height: 1.45;
+    font-weight: 500;
+  }
+
+  .spice-card {
+    position: absolute;
+    text-align: center;
+    width: 14%;
+    z-index: 2;
+  }
+  .spice-card .label {
+    font-family: 'Anton', 'Archivo Black', sans-serif;
+    font-weight: 400;
+    font-size: clamp(14px, 1.4vw, 22px);
+    letter-spacing: 1.5px;
+    margin: 0 0 8px;
+    line-height: 1;
+  }
+  .spice-card .desc {
+    font-size: clamp(14px, 0.78vw, 12px);
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #2a2a2a;
+    line-height: 1.4;
+    margin: 0;
+  }
+  .spice-card.original { left: 47.5%; top: 49%; }
+  .spice-card.original .label { color: var(--blue); }
+  .spice-card.mild     { left: 65.4%; top: 49%; }
+  .spice-card.mild .label { color: #f0a000; }
+  .spice-card.burning  { left: 82.4%; top: 49%; }
+  .spice-card.burning .label { color: var(--red); }
+
+  .spice-chicken {
+    position: absolute;
+    width: 8%;
+    z-index: 2;
+    top: 5%;
+    cursor: pointer;
+    will-change: transform, opacity;
+    opacity: 0;
+    transform: translateX(-50%) translateY(90px) scale(0.7);
+  }
+  .spice-chicken img {
+    transition: transform 0.35s cubic-bezier(.34, 1.56, .64, 1),
+                filter 0.35s ease;
+  }
+  .spice-chicken:hover img {
+    transform: scale(1.12) rotate(-4deg);
+    filter: drop-shadow(0 14px 18px rgba(0,0,0,0.25));
+  }
+  .spice-chicken img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  .spice-chicken.pop {
+    animation: chickenPop 0.85s cubic-bezier(.34, 1.56, .64, 1) forwards;
+  }
+  .spice-chicken.original.pop { animation-delay: 0s; }
+  .spice-chicken.mild.pop     { animation-delay: 0.22s; }
+  .spice-chicken.burning.pop  { animation-delay: 0.44s; }
+
+  @keyframes chickenPop {
+    0%   { transform: translateX(-50%) translateY(90px) scale(0.65); opacity: 0; }
+    45%  { transform: translateX(-50%) translateY(-18px) scale(1.10); opacity: 1; }
+    65%  { transform: translateX(-50%) translateY(10px)  scale(0.94); }
+    80%  { transform: translateX(-50%) translateY(-5px)  scale(1.03); }
+    92%  { transform: translateX(-50%) translateY(2px)   scale(0.99); }
+    100% { transform: translateX(-50%) translateY(0)     scale(1);    opacity: 1; }
+  }
+  .spice-chicken.original { left: 54.5%; top:10%; }
+  .spice-chicken.mild     { left: 72.4%; top:10%; }
+  .spice-chicken.burning  { left: 89.4%; top:10%; }
+
+  /* ---------- SAUCE / MENU ---------- */
+  .sauce {
+    background-image: url('sauce-section.png');
+    background-color: var(--cream);
+    background-size: cover;
+    background-position: center;
+    height: auto;
+    min-height: 0;
+    padding: 0px 56px 60px;
+    margin-top: -80px;
+  }
+
+  .sauce-pairings {
+    display: grid;
+    grid-template-columns: minmax(280px, 1fr) 2.4fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 70px;
+  }
+  .pairings-intro h2 {
+    font-family: 'Anton', 'Archivo Black', sans-serif;
+    font-weight: 400;
+    color: var(--blue);
+    font-size: clamp(36px, 3.6vw, 58px);
+    line-height: 0.95;
+    margin: 0 0 18px;
+    letter-spacing: 1px;
+  }
+  .pairings-intro h2 .sparkle {
+    color: #f5b400;
+    font-size: 0.6em;
+    margin-left: 6px;
+    display: inline-block;
+    transform: translateY(-0.3em);
+  }
+  .pairings-intro p {
+    margin: 0 0 28px;
+    font-size: 15px;
+    line-height: 1.5;
+    color: #2a2a2a;
+    max-width: 320px;
+  }
+  .explore-btn {
+    background: var(--red);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    padding: 16px 30px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .pairings-carousel {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .arrow-btn {
+    flex: 0 0 auto;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid #e2dccc;
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  }
+  .pairings-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    flex: 1;
+  }
+  .pairing-card {
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    display: flex;
+    flex-direction: column;
+  }
+  .pairing-card .img {
+    height: 170px;
+    background: #ece4d4 center/cover no-repeat;
+    position: relative;
+  }
+  .pairing-card.ranch .img { background-image: url('sauce-pairing-one.png'); }
+  .pairing-card.honey .img { background-image: url('sauce-pairing-two.png'); }
+  .pairing-card.bbq .img   { background-image: url('sauce-pairing-three.png'); }
+  .pairing-card .body {
+    padding: 16px 18px 18px;
+    position: relative;
+  }
+  .pairing-card h3 {
+    font-family: 'Anton', 'Archivo Black', sans-serif;
+    font-weight: 400;
+    font-size: 22px;
+    margin: 0 0 6px;
+    letter-spacing: 1.5px;
+  }
+  .pairing-card.ranch h3 { color: var(--blue); }
+  .pairing-card.honey h3 { color: #f0a000; }
+  .pairing-card.bbq h3   { color: var(--red); }
+  .pairing-card p {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+    line-height: 1.4;
+    max-width: 70%;
+  }
+  .plus-btn {
+    position: absolute;
+    bottom: 14px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    font-size: 18px;
+    line-height: 1;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .featured-menu h2 {
+    font-family: 'Anton', 'Archivo Black', sans-serif;
+    font-weight: 400;
+    color: var(--blue);
+    font-size: clamp(30px, 2.8vw, 44px);
+    margin: 0 0 24px;
+    letter-spacing: 1px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .featured-menu h2 .burst {
+    color: #f5b400;
+    font-size: 0.6em;
+  }
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .menu-card {
+    background: #fff;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+  }
+  .menu-card .img {
+    height: 190px;
+    background: #ece4d4 center/cover no-repeat;
+  }
+  .menu-card.tenders .img  { background-image: url('featured-menu-one.png'); }
+  .menu-card.mozza .img    { background-image: url('featured-menu-two.png'); }
+  .menu-card.fries .img    { background-image: url('featured-menu-three.png'); }
+  .menu-card.lemonade .img { background-image: url('featured-menu-four.png'); }
+  .menu-card .body {
+    padding: 18px 18px 20px;
+    position: relative;
+  }
+  .menu-card h3 {
+    font-family: 'Anton', 'Archivo Black', sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.05;
+    color: var(--red);
+    margin: 0 0 10px;
+    letter-spacing: 1px;
+    max-width: 70%;
+  }
+  .menu-card .price {
+    margin: 0;
+    color: var(--blue);
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+  }
+
+  /* ---------- STRIP (Locations) ---------- */
+  .strip {
+    position: relative;
+    width: 100%;
+    height: auto;
+    min-height: 38vw;
+    overflow: hidden;
+  }
+  .strip .bg {
+    display: block;
+    width: 100%;
+    height: auto;
+    /* margin-top: -10%; */
+  }
+  .strip-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+    width: 100%;
+    max-width: 560px;
+  }
+  .strip-center .top-line {
+    display: block;
+    font-family: 'Anton', 'Archivo Black', sans-serif;
+    font-weight: 400;
+    font-size: clamp(60px, 2.2vw, 36px);
+    letter-spacing: 2px;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+  .strip-center .cities {
+    display: block;
+    font-family: 'Pacifico', 'Brush Script MT', cursive;
+    color: #f5b400;
+    font-size: clamp(50px, 3.4vw, 56px);
+    line-height: 1.1;
+    margin-bottom: 25px;
+  }
+  .strip-center p {
+    margin: 0 0 16px;
+    font-size: clamp(20px, 0.95vw, 14px);
+    line-height: 1.5;
+    color: #e8e8f0;
+  }
+  .find-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 26px;
+    border-radius: 999px;
+    border: 1.5px solid rgba(255,255,255,0.75);
+    background: transparent;
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    font-size: 20px;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+  }
+  .find-btn .pin {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+  }
+
+  .polaroid-caption {
+    position: absolute;
+    background: #fff;
+    color: var(--blue);
+    font-family: 'Pacifico', 'Brush Script MT', cursive;
+    font-size: clamp(14px, 1.4vw, 22px);
+    padding: 6px 22px;
+    border-radius: 4px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.18);
+    letter-spacing: 1px;
+    z-index: 3;
+    white-space: nowrap;
+  }
+  .polaroid-caption.left  { top: 68%; left: 10%;  transform: rotate(-4deg); }
+  .polaroid-caption.right { top: 68%; right: 10%; transform: rotate(3deg); }
+
+  /* ---------- REELS (Straight From The 'Gram) ---------- */
+  .reels {
+    background: var(--cream);
+    padding: 50px 56px 40px;
+    height: auto;
+  }
+  .reels-row {
+    display: grid;
+    grid-template-columns: 220px repeat(6, 1fr);
+    gap: 14px;
+    align-items: center;
+  }
+  .reels-intro h2 {
+    font-family: 'Anton', 'Archivo Black', sans-serif;
+    font-weight: 400;
+    color: var(--blue);
+    font-size: clamp(26px, 2.4vw, 38px);
+    line-height: 0.95;
+    margin: 0 0 8px;
+    letter-spacing: 1px;
+  }
+  .reels-intro .handle {
+    color: var(--red);
+    font-weight: 800;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    margin: 0;
+  }
+  .reels-intro .arrow {
+    color: #f0a000;
+    font-size: 28px;
+    display: inline-block;
+    margin-top: 6px;
+    transform: rotate(20deg);
+  }
+  .reel-card {
+    position: relative;
+    aspect-ratio: 9 / 14;
+    border-radius: 14px;
+    overflow: hidden;
+    background: #2a2a2a center/cover no-repeat;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    display: block;
+  }
+  .reel-card:hover { transform: translateY(-4px); }
+  .reel-card::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 18px;
+    height: 14px;
+    border-radius: 3px;
+    background:
+      linear-gradient(45deg, transparent 45%, #fff 45%, #fff 55%, transparent 55%) 5px 0/8px 14px no-repeat,
+      rgba(0,0,0,0.35);
+    border: 1.5px solid rgba(255,255,255,0.9);
+  }
+
+  /* ---------- SITE FOOTER ---------- */
+  .site-footer {
+    background: var(--cream);
+    padding: 30px 56px 0;
+    font-size: 13px;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1.4fr 1fr 1.4fr;
+    gap: 36px;
+    padding: 32px 0;
+    border-top: 1px solid #e5dfd0;
+    align-items: flex-start;
+  }
+  .footer-brand img {
+    height: 70px;
+    width: auto;
+    display: block;
+    margin-bottom: 16px;
+  }
+  .footer-brand p {
+    margin: 0;
+    line-height: 1.55;
+    color: #444;
+    max-width: 230px;
+    font-size: 13px;
+  }
+  .footer-col h4 {
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    color: var(--blue);
+    margin: 4px 0 14px;
+  }
+  .footer-col ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .footer-col li { margin-bottom: 8px; }
+  .footer-col a {
+    color: #333;
+    text-decoration: none;
+  }
+  .footer-col a:hover { color: var(--red); }
+  .footer-col .city-name {
+    color: var(--red);
+    font-weight: 700;
+    margin: 0 0 4px;
+  }
+  .footer-col .city + .city { margin-top: 14px; }
+  .footer-col .city p {
+    margin: 0;
+    line-height: 1.5;
+    color: #444;
+  }
+
+  .footer-social {
+    display: flex;
+    gap: 10px;
+  }
+  .footer-social a {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: 1.5px solid #d9d2c0;
+    background: var(--cream);
+    color: #1a1a1a;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .footer-social a:hover { transform: translateY(-2px); background: #fff; }
+  .footer-social a svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+  .footer-social .whatsapp { background: #25D366; border-color: #25D366; color: #fff; }
+
+  .footer-newsletter .email-row {
+    background: #fff;
+    border: 1px solid #d9d2c0;
+    border-radius: 6px;
+    padding: 10px 14px;
+    margin-bottom: 10px;
+  }
+  .footer-newsletter input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 13px;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+  }
+  .subscribe-btn {
+    background: var(--blue);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 11px 18px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    font-size: 12px;
+    cursor: pointer;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .footer-bar {
+    background: var(--blue);
+    color: #fff;
+    padding: 20px 56px;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 -56px;
+  }
+  .footer-bar a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 22px;
+  }
+  .footer-bar a:hover { text-decoration: underline; }
+
+  @media (max-width: 1100px) {
+    .hero-content .line-2,
+    .hero-content .line-3 { font-size: 72px; }
+    .hero-content .line-1 { font-size: 44px; }
+    .nav { padding: 18px 28px; }
+    .hero-content { left: 28px; }
+    .nav-links { gap: 22px; }
+  }
+  @media (max-width: 780px) {
+    .nav-links { display: none; }
+    .hero-content .line-2,
+    .hero-content .line-3 { font-size: 52px; }
+    .hero-content .line-1 { font-size: 32px; }
+    .badges { flex-wrap: wrap; gap: 14px; }
+  }
+</style>
+</head>
+<body>
+  <div class="hero-spice">
+  <section class="section hero">
+    <nav class="nav">
+      <a href="#" class="nav-logo">
+        <img src="pecks-logo.png" alt="Peck's Nashville Hot Chicken">
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#" class="active">HOME</a></li>
+        <li><a href="#">MENU</a></li>
+        <li><a href="#">SPICE LEVELS</a></li>
+        <li><a href="#">LOCATIONS</a></li>
+        <li><a href="#">CATERING</a></li>
+        <li><a href="#">ABOUT</a></li>
+      </ul>
+
+      <div class="nav-right">
+        <a href="#" class="ig-icon" aria-label="Instagram"></a>
+        <button class="order-btn">ORDER NOW <span class="flame">🔥</span></button>
+      </div>
+    </nav>
+
+    <img class="hero-chicken" src="chicken-holding.png" alt="">
+    <img class="fired-up-sticker" src="getfiredup-sticker.png" alt="Get Fired Up!">
+
+    <div class="hero-content">
+      <h1>
+        <span class="line-1">MALAYSIA'S FIRST</span>
+        <span class="line-2">NASHVILLE</span>
+        <span class="line-3">HOT CHICKEN</span>
+      </h1>
+      <p class="tagline">
+        Crispy, juicy &amp; boldly seasoned.<br>
+        Straight outta Nashville, made for Malaysia.
+      </p>
+      <div class="cta-row">
+        <a href="#menu" class="btn btn-primary">VIEW MENU <span class="arrow">→</span></a>
+        <a href="#locations" class="btn btn-secondary">FIND US <span class="arrow">📍</span></a>
+      </div>
+      <div class="badges">
+        <div class="badge"><span class="icon">🕌</span> HALAL FRIENDLY</div>
+        <span class="sep">|</span>
+        <div class="badge"><span class="icon">🔥</span> FRESHLY MADE</div>
+        <span class="sep">|</span>
+        <div class="badge"><span class="icon">⭐</span> BOLD FLAVOURS</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section spice-level">
+    <div class="spice-title">
+      <h2>PICK YOUR<br>SPICE LEVEL</h2>
+      <p>From first-timers to heat seekers.<br>There's a level for every brave soul.</p>
+    </div>
+    <div class="spice-chicken original">
+      <img src="original-chicken-after.png" alt="">
+    </div>
+    <div class="spice-chicken mild">
+      <img src="mild-chicken-after.png" alt="">
+    </div>
+    <div class="spice-chicken burning">
+      <img src="spicy-chicken-after.png" alt="">
+    </div>
+    <div class="spice-card original">
+      <p class="label">ORIGINAL</p>
+      <p class="desc">YOU'RE BASIC,<br>WE DON'T SELL<br>BASIC THINGS.</p>
+    </div>
+    <div class="spice-card mild">
+      <p class="label">MILD WEST</p>
+      <p class="desc">YOU'LL SLIGHTLY<br>SWEATING.</p>
+    </div>
+    <div class="spice-card burning">
+      <p class="label">BURNING MAN</p>
+      <p class="desc">YOU'RE BRAVE.</p>
+    </div>
+  </section>
+  <section class="section sauce">
+    <div class="sauce-pairings">
+      <div class="pairings-intro">
+        <h2>SAUCE PAIRINGS <span class="sparkle">✦</span></h2>
+        <p>Pick your dip. Level up your bite.<br>Made to match every mood.</p>
+        <a href="#sauces" class="explore-btn">EXPLORE SAUCES <span>→</span></a>
+      </div>
+      <div class="pairings-carousel">
+        <button class="arrow-btn prev" aria-label="Previous">‹</button>
+        <div class="pairings-grid">
+          <div class="pairing-card ranch">
+            <div class="img"></div>
+            <div class="body">
+              <h3>RANCH</h3>
+              <p>Cool. Creamy.<br>Always a classic.</p>
+              <button class="plus-btn" aria-label="Add">+</button>
+            </div>
+          </div>
+          <div class="pairing-card honey">
+            <div class="img"></div>
+            <div class="body">
+              <h3>HONEY MUSTARD</h3>
+              <p>Sweet, tangy &amp;<br>totally addictive.</p>
+              <button class="plus-btn" aria-label="Add">+</button>
+            </div>
+          </div>
+          <div class="pairing-card bbq">
+            <div class="img"></div>
+            <div class="body">
+              <h3>BBQ</h3>
+              <p>Smoky, bold &amp;<br>finger-licking good.</p>
+              <button class="plus-btn" aria-label="Add">+</button>
+            </div>
+          </div>
+        </div>
+        <button class="arrow-btn next" aria-label="Next">›</button>
+      </div>
+    </div>
+
+    <div class="featured-menu">
+      <h2>FEATURED MENU <span class="burst">✦</span></h2>
+      <div class="menu-grid">
+        <div class="menu-card tenders">
+          <div class="img"></div>
+          <div class="body">
+            <h3>NASHVILLE<br>CHICKEN TENDERS</h3>
+            <p class="price">FROM RM16.90</p>
+            <button class="plus-btn" aria-label="Add">+</button>
+          </div>
+        </div>
+        <div class="menu-card mozza">
+          <div class="img"></div>
+          <div class="body">
+            <h3>MOZZARELLA<br>STICK</h3>
+            <p class="price">FROM RM13.90</p>
+            <button class="plus-btn" aria-label="Add">+</button>
+          </div>
+        </div>
+        <div class="menu-card fries">
+          <div class="img"></div>
+          <div class="body">
+            <h3>LOADED<br>FRIES</h3>
+            <p class="price">FROM RM15.90</p>
+            <button class="plus-btn" aria-label="Add">+</button>
+          </div>
+        </div>
+        <div class="menu-card lemonade">
+          <div class="img"></div>
+          <div class="body">
+            <h3>PECK'S<br>LEMONADE</h3>
+            <p class="price">FROM RM8.90</p>
+            <button class="plus-btn" aria-label="Add">+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section strip">
+    <div class="strip-center">
+      <span class="top-line">PROUDLY SERVING</span>
+      <span class="cities">Cyberjaya &amp; Putrajaya</span>
+      <p>Made fresh daily. Made for you.<br>Come find us and taste the heat!</p>
+      <a href="#locations" class="find-btn">FIND OUR LOCATIONS <span class="pin">📍</span></a>
+    </div>
+    <span class="polaroid-caption left">CYBERJAYA</span>
+    <span class="polaroid-caption right">PUTRAJAYA</span>
+  </section>
+
+  <section class="reels">
+    <div class="reels-row">
+      <div class="reels-intro">
+        <h2>STRAIGHT FROM<br>THE 'GRAM</h2>
+        <p class="handle">@pecks.my</p>
+        <span class="arrow">↘</span>
+      </div>
+      <a class="reel-card" href="#"></a>
+      <a class="reel-card" href="#"></a>
+      <a class="reel-card" href="#"></a>
+      <a class="reel-card" href="#"></a>
+      <a class="reel-card" href="#"></a>
+      <a class="reel-card" href="#"></a>
+    </div>
+  </section>
+
+  <footer class="site-footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="pecks-logo.png" alt="Peck's">
+        <p>Malaysia's first Nashville hot chicken &mdash; crispy, juicy and packed with attitude.</p>
+      </div>
+      <div class="footer-col">
+        <h4>QUICK LINKS</h4>
+        <ul>
+          <li><a href="#">Menu</a></li>
+          <li><a href="#">Spice Levels</a></li>
+          <li><a href="#">Locations</a></li>
+          <li><a href="#">Catering</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>LOCATIONS</h4>
+        <div class="city">
+          <p class="city-name">Cyberjaya</p>
+          <p>Lorong Belakang Cyberjaya,<br>63000 Cyberjaya, Selangor</p>
+        </div>
+        <div class="city">
+          <p class="city-name">Putrajaya</p>
+          <p>Kiddytopia IOI Putrajaya,<br>IOI Resort City, Putrajaya</p>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>FOLLOW US</h4>
+        <div class="footer-social">
+          <a href="#" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.6 0 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.25.07 1.65.07 4.85s0 3.6-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.25.06-1.65.07-4.85.07s-3.6 0-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.43-.36-1.06-.41-2.23C2.2 15.6 2.2 15.2 2.2 12s0-3.6.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.4 2.2 8.8 2.2 12 2.2zm0 1.8c-3.15 0-3.52.01-4.76.07-1.07.05-1.65.23-2.04.38a3.4 3.4 0 0 0-1.26.82 3.4 3.4 0 0 0-.82 1.26c-.15.39-.33.97-.38 2.04C2.69 9.48 2.68 9.85 2.68 13s.01 3.52.07 4.76c.05 1.07.23 1.65.38 2.04.2.5.45.86.82 1.26.4.4.76.62 1.26.82.39.15.97.33 2.04.38 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c1.07-.05 1.65-.23 2.04-.38a3.4 3.4 0 0 0 1.26-.82c.4-.4.62-.76.82-1.26.15-.39.33-.97.38-2.04.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.05-1.07-.23-1.65-.38-2.04a3.4 3.4 0 0 0-.82-1.26 3.4 3.4 0 0 0-1.26-.82c-.39-.15-.97-.33-2.04-.38C15.52 4 15.15 4 12 4zm0 3.06a4.94 4.94 0 1 1 0 9.88 4.94 4.94 0 0 1 0-9.88zm0 8.14a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4zm5.15-8.34a1.16 1.16 0 1 1 0 2.32 1.16 1.16 0 0 1 0-2.32z"/></svg>
+          </a>
+          <a href="#" aria-label="TikTok">
+            <svg viewBox="0 0 24 24"><path d="M16.6 5.82a4.28 4.28 0 0 1-.86-.05V16.6a3.78 3.78 0 1 1-3.78-3.78c.2 0 .4.02.6.05V9.3a7.16 7.16 0 0 0-.6-.03 7.34 7.34 0 1 0 7.34 7.34V9.42a6.7 6.7 0 0 0 3.84 1.2V7.2a4.28 4.28 0 0 1-2.18-1.16 4.27 4.27 0 0 1-1.36-2.5h-3.4v2.28h.4z"/></svg>
+          </a>
+          <a href="#" class="whatsapp" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24"><path d="M20.5 3.5A10.46 10.46 0 0 0 12.05 0 10.5 10.5 0 0 0 3 16l-1.5 5.5L7 20a10.5 10.5 0 0 0 5.05 1.28h.01A10.5 10.5 0 0 0 22.5 11a10.4 10.4 0 0 0-2-7.5zM12 19.5h-.01a8.7 8.7 0 0 1-4.45-1.22l-.32-.2-3.3.86.88-3.22-.2-.33A8.7 8.7 0 0 1 3.27 11 8.73 8.73 0 0 1 12 2.27a8.7 8.7 0 0 1 6.17 2.56A8.65 8.65 0 0 1 20.73 11 8.74 8.74 0 0 1 12 19.5zm4.78-6.5c-.26-.13-1.54-.76-1.78-.85-.24-.09-.41-.13-.59.13-.17.26-.67.85-.83 1.02-.15.17-.3.2-.56.07-.26-.13-1.1-.41-2.1-1.3-.78-.7-1.3-1.55-1.46-1.8-.15-.26-.02-.4.11-.53.12-.12.26-.3.39-.46.13-.15.17-.26.26-.43.09-.17.04-.32-.02-.46-.07-.13-.59-1.42-.81-1.95-.21-.51-.43-.44-.59-.45-.15-.01-.32-.01-.5-.01s-.46.06-.7.32c-.24.26-.92.9-.92 2.2 0 1.3.94 2.55 1.07 2.72.13.17 1.85 2.82 4.48 3.96.63.27 1.12.43 1.5.55.63.2 1.2.17 1.66.1.5-.07 1.54-.63 1.76-1.24.22-.6.22-1.13.15-1.24-.06-.1-.24-.17-.5-.3z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col footer-newsletter">
+        <h4>GET THE LATEST<br>DEALS &amp; UPDATES</h4>
+        <div class="email-row">
+          <input type="email" placeholder="Enter your email">
+        </div>
+        <button class="subscribe-btn">SUBSCRIBE</button>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <span>© 2025 Peck's Nashville Hot Chicken. All rights reserved.</span>
+      <span>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms &amp; Conditions</a>
+      </span>
+    </div>
+  </footer>
+  </div>
+
+  <script>
+    (function () {
+      const spice = document.querySelector('.spice-level');
+      const chickens = document.querySelectorAll('.spice-chicken');
+      if (!spice || !chickens.length) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              chickens.forEach(el => el.classList.add('pop'));
+            }, 250);
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.35 });
+
+      observer.observe(spice);
+    })();
+  </script>
+</body>
+</html>
