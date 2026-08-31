@@ -12,6 +12,7 @@
     --red: #e1251b;
     --blue: #1f3a8a;
     --cream: #f5efe4;
+    --paper: #f8f3ea;      /* paper tone sampled from the backdrop artwork */
     --ink: #1a1a1a;
   }
   * { box-sizing: border-box; }
@@ -33,18 +34,19 @@
   /* ---------- HERO + SPICE WRAP (shared bg spanning both) ---------- */
   .hero-spice {
     position: relative;
-    background-image: url('spice-level-bg2.png');
-    background-color: var(--cream);
+    /* Only the artwork ABOVE the locations band. The band itself moved onto
+       .strip so it travels with the section instead of drifting against it —
+       the backdrop is scaled by width, the flow stacked on it is not. */
+    background-image: url('hero-paper.png');
+    background-color: var(--paper);
     background-position: top center;
     background-size: 100% auto;
     background-repeat: no-repeat;
     overflow: hidden;
-    min-height: 218vw;
   }
   .hero-spice > .hero,
   .hero-spice > .spice-level,
   .hero-spice > .sauce,
-  .hero-spice > .strip,
   .hero-spice > .reels,
   .hero-spice > .site-footer {
     background: transparent !important;
@@ -363,14 +365,14 @@
     font-family: 'Anton', 'Archivo Black', sans-serif;
     font-weight: 400;
     color: var(--red);
-    font-size: clamp(120px, 3.4vw, 52px);
+    font-size: clamp(52px, 6.5vw, 120px);
     line-height: 0.95;
     margin: 0 0 14px;
     letter-spacing: 1px;
   }
   .spice-title p {
     margin: 0;
-    font-size: clamp(20px, 0.95vw, 14px);
+    font-size: clamp(14px, 1.1vw, 20px);
     color: #2a2a2a;
     line-height: 1.45;
     font-weight: 500;
@@ -647,9 +649,14 @@
   /* ---------- STRIP (Locations) ---------- */
   .strip {
     position: relative;
+    z-index: 1;
     width: 100%;
     height: auto;
-    min-height: 38vw;
+    /* Box is the exact aspect of locations-band.png, so centring on the box
+       IS centring on the band — at any window size. */
+    aspect-ratio: 1672 / 527;
+    background: url('locations-band.png') top center / 100% auto no-repeat;
+    margin-top: 8vw;
     overflow: hidden;
   }
   .strip .bg {
@@ -673,7 +680,7 @@
     display: block;
     font-family: 'Anton', 'Archivo Black', sans-serif;
     font-weight: 400;
-    font-size: clamp(60px, 2.2vw, 36px);
+    font-size: clamp(36px, 3.3vw, 60px);
     letter-spacing: 2px;
     line-height: 1;
     margin-bottom: 4px;
@@ -688,7 +695,7 @@
   }
   .strip-center p {
     margin: 0 0 16px;
-    font-size: clamp(20px, 0.95vw, 14px);
+    font-size: clamp(14px, 1.1vw, 20px);
     line-height: 1.5;
     color: #e8e8f0;
   }
@@ -745,6 +752,11 @@
     grid-template-columns: 220px repeat(6, 1fr);
     gap: 14px;
     align-items: center;
+  }
+  .reels-intro {
+    /* half the height of the handle + arrow trailing the heading, so the
+       heading — not the whole box — lines up with the middle of the reels */
+    transform: translateY(34px);
   }
   .reels-intro h2 {
     font-family: 'Anton', 'Archivo Black', sans-serif;
@@ -977,7 +989,8 @@
     .hero-spice > .sauce,
     .hero-spice > .reels,
     .hero-spice > .site-footer { background-color: var(--cream) !important; }
-    .hero-spice > .strip       { background-color: var(--band-blue) !important; }
+    .hero-spice > .strip       { background-color: var(--band-blue) !important;
+                                 background-image: none !important; }
 
     /* Sunburst sits behind the chicken, mirroring the desktop composition.
        It rides on a pseudo-element rather than .hero's background so its top
@@ -1255,6 +1268,8 @@
     /* ---------- STRIP (locations) ---------- */
     .strip {
       position: relative;
+      aspect-ratio: auto;
+      margin-top: 0;
       min-height: 0;
       overflow: visible;
       padding: 48px 22px 54px;
@@ -1303,6 +1318,7 @@
     .reels-intro {
       grid-column: 1 / -1;
       margin-bottom: 4px;
+      transform: none;
     }
     .reels-intro h2 { font-size: clamp(22px, 6.8vw, 34px); }
     .reel-card { border-radius: 10px; }

@@ -18,10 +18,15 @@
 !sauce-pairing-two.png
 !sauce-pairing-three.png
 !sauce-section.png
-!spice-level-bg2.png
+!hero-paper.png
+!locations-band.png
 !mild-chicken-after.png
 !original-chicken-after.png
 !spicy-chicken-after.png
 !mobile-sunburst.jpg
 !mobile-torn-top.png
 !mobile-torn-bottom.png
+
+# Source art, not referenced by index.html:
+# hero-paper.png and locations-band.png are cropped from this.
+!spice-level-bg2.png
